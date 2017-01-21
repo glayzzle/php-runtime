@@ -1,0 +1,23 @@
+{
+  "name": "php-runtime",
+  "version": "1.0.0",
+  "description": "Runtime in order to execute transpiled PHP code into NodeJS/Javascript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glayzzle/php-runtime.git"
+  },
+  "keywords": [
+    "php",
+    "runtime"
+  ],
+  "author": "Ioan CHIRIAC",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/glayzzle/php-runtime/issues"
+  },
+  "homepage": "https://github.com/glayzzle/php-runtime#readme"
+}
