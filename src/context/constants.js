@@ -16,11 +16,10 @@ var std = 'standard';
  * Handles constants
  * @constructor Constants
  */
-var Constants = function(ctx) {
-  this.ctx = ctx;
+var Constants = function() {
   // List of default constants
   // php -r "print_r(get_defined_constants(true));" > constants.txt
-  this.items: {
+  this.items = {
     /** CORE CONSTANTS **/
     E_ERROR:             { value: 1, category: core },
     E_WARNING:           { value: 2, category: core },
@@ -92,38 +91,56 @@ var Constants = function(ctx) {
 /**
  * Sets a constant value
  */
-Constants.prototype.set = function(name, contents, category) {
-  if (this.items.hasOwnProperty(name)) {
-    this.ctx.php.trigger_error(
-      'Constant ' + name + ' is already defined', this.item.E_NOTICE.value
-    );
-    return false;
-  } else {
-    this.items[name] = { value: contents, category: category || user };
+Constants.prototype.set = function(name, contents, insensitive) {
+  if (insensitive) {
+    name = name.toUpperCase();
+  }
+  if (!(name in this.items)) {
+    this.items[name] = {
+      value: contents,
+      category: user,
+      insensitive: insensitive
+    };
     return true;
   }
+  return false;
 };
 
 /**
  * Reads a constant value
  */
 Constants.prototype.get = function(name) {
-  if (!this.items.hasOwnProperty(name)) {
-    this.ctx.php.trigger_error(
-      ' Use of undefined constant '+name+' - assumed \''+name+'\''
-      , this.items.E_NOTICE.value
-    );
-    return name;
-  } else {
-    return this.items[name].value;
+  var shouldInsensitive = false;
+  if (!(name in this.items)) {
+    name = name.toUpperCase();
+    shouldInsensitive = true;
   }
+  if (!(name in this.items)) {
+    return undefined;
+  }
+  var constant = this.items[name];
+  if (shouldInsensitive && !constant.insensitive) {
+    return undefined;
+  }
+  return constant.value;
 };
 
 /**
  * Check if the specified constant exists
  */
 Constants.prototype.has = function(name) {
-  return this.items.hasOwnProperty(name);
+  var shouldInsensitive = false;
+  if (!(name in this.items)) {
+    name = name.toUpperCase();
+    shouldInsensitive = true;
+  }
+  if (!(name in this.items)) {
+    return false;
+  }
+  if (shouldInsensitive && !this.items[name].insensitive) {
+    return false;
+  }
+  return true;
 };
 
 
