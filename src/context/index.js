@@ -21,6 +21,7 @@ var Constants = require('./constants');
 var Context = function(php) {
   this.php        = php;
   this.loaders    = [];
+  this.includes   = [];
   this.class      = new Classes(this);
   this.interface  = new Interfaces(this);
   this.trait      = new Traits(this);
@@ -29,7 +30,6 @@ var Context = function(php) {
   this.variable   = new Variables(this);
   this.namespace  = new Namespaces(this);
 };
-
 
 /**
  * Declares an autoload function
