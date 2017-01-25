@@ -10,23 +10,22 @@
  */
 var Function = function(fn, name, namespace) {
   this.fn = fn;
-  this.name = name;
-  this.namespace = namespace;
+  this.name = name || 'closure';
+  this.namespace = namespace || '\\';
   this.arguments = [];
   this.type = null;
 };
 
 /**
  * Gets callback entry
- */
 Function.prototype.get = function() {
   return this.call.bind(this);
 };
+*/
 
 /**
  * Make a call to the specified function
- */
-Function.prototype.call = function(context, arguments) {
+Function.prototype.call = function(context, args) {
   var result = this.fn.apply(context, args);
   if (this.type) {
     switch(this.type) {
@@ -39,5 +38,6 @@ Function.prototype.call = function(context, arguments) {
   }
   return result;
 };
+*/
 
 module.exports = Function;
