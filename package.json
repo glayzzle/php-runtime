@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/glayzzle/php-runtime#readme",
   "dependencies": {
+    "extend": "^3.0.0",
     "php-parser": "latest",
     "php-transpiler": "latest"
   },
