@@ -60,9 +60,9 @@ Classes.prototype.has = function(name, autoload) {
  * Initialize a new class instance
  * @return {Object}
  */
-Classes.prototype.construct = function(name, arguments) {
+Classes.prototype.construct = function(name, args) {
   var item = this.get(name);
-  return new item(arguments);
+  return new item(args);
 };
 
 /**
