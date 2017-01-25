@@ -17,5 +17,5 @@ namespace foo\bar {
       return fibo($a - 2) + fibo($a - 1);
     }
   }
-  echo fibo(30);
+  echo fibo(3);
 }
