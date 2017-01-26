@@ -42,7 +42,7 @@ var Core = function(options) {
   this.config = new Config();
   this.cache = new Cache();
   if (options) {
-    extend(true, this, options);
+    extend(true, options, this);
   }
 };
 
