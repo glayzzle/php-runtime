@@ -83,6 +83,4 @@ module.exports = function($php) {
 
   /** register global functions **/
   $php.constant = $php.context.function.callback('\\constant');
-
-
 };
