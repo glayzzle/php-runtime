@@ -27,12 +27,12 @@ var defaults = {
   html_errors: false,
   error_log: '/var/log/php-error.log',
   include_path: ['.', '/usr/share/php'],
-  extension_dir: ['./node_modules', '/usr/local/lib/node_modules'],
+  extension_dir: [__dirname + '/ext', './node_modules', '/usr/local/lib/node_modules'],
   enable_dl: false,
   allow_url_fopen: true,
   allow_url_include: false,
+  // list of extensions
   extension: [],
-  // Defines the default timezone used by the date functions
   // http://php.net/date.timezone
   date: {
     timezone: "UTC",
@@ -52,9 +52,9 @@ var defaults = {
  */
 var Config = function(options) {
   if (options) {
-    extend(true, this, defaults, options);
+    extend(true, options, defaults, this);
   } else {
-    extend(true, this, defaults);
+    extend(true, defaults, this);
   }
 };
 
