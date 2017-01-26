@@ -6,6 +6,8 @@
 'use strict';
 module.exports = function($php) {
 
+  var phpArray = require('../array');
+
   // defines a list of message types
   const E_ERROR             = $php.constant('E_ERROR');
   const E_WARNING           = $php.constant('E_WARNING');
@@ -74,5 +76,31 @@ module.exports = function($php) {
 
   /** register global functions **/
   $php.trigger_error = $php.context.function.callback('\\trigger_error');
+  $php.type_error = function(argPos, argName, fnName, argType, value) {
+    var curType = 'mixed';
+    if (value instanceof Number) {
+      curType = 'int';
+    } else if (typeof value === 'string') {
+      curType = 'string';
+    } else if (typeof value === 'boolean') {
+      curType = 'bool';
+    } else if (value instanceof phpArray) {
+      curType = 'array';
+    }
+    if (argPos === -1) {
+      // @fixme trigger an TypeError exception
+      $php.trigger_error(
+        'Return value of ' + fnName + '() ' +
+        'must be of the type ' + argType + ', ' + curType + ' given',
+        E_ERROR
+      );
+    } else {
+      $php.trigger_error(
+        'Argument ' + argPos + ' passed to ' + fnName + '() ' +
+        'must be of the type ' + argType + ', ' + curType + ' given',
+        E_ERROR
+      );
+    }
+  };
 
 };
