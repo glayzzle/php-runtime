@@ -29,6 +29,8 @@ var Context = function(php) {
   this.constant   = new Constants(this);
   this.variable   = new Variables(this);
   this.namespace  = new Namespaces(this);
+  this.strictTypes    = false;
+  this.isCoreLoading  = true;
 };
 
 /**
