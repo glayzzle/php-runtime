@@ -11,10 +11,24 @@ var Transpiler = require('php-transpiler');
 var Runtime = require('../src/index');
 
 describe('init', function() {
+  // PRODUCTION SETUP :
+  var php = new Runtime({
+    core: {
+      config: {
+        error_log: 'syslog',
+        //display_errors: false,
+        //display_startup_errors: false,
+        extension: [
+          'glayzzle-mysqlnd',
+          'glayzzle-pdo',
+          'glayzzle-pdo-mysql'
+        ]
+      }
+    }
+  });
+
   it('should work', function() {
-    var php = new Runtime();
     php.include(__dirname + '/fibo.php');
-
-
+    php.include(__dirname + '/loop.php');
   });
 });
