@@ -26,6 +26,18 @@ Functions.prototype.has = function(name) {
   return name in this.items;
 };
 
+/**
+ * Declares an async function
+ */
+Functions.prototype.async = function(name, args, type, fn) {
+  var func = this.declare(name, args, type, fn);
+  func.fn = function() {
+    var ctx = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+
+  };
+};
+
 Functions.prototype.declare = function(name, args, type, fn) {
 
   // closure signature : (fn)

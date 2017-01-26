@@ -48,6 +48,7 @@ var Runtime = function(options) {
   require('./ext/errors')(this);
   require('./ext/math')(this);
   require('./ext/datetime')(this);
+  require('./ext/streams')(this);
   /** @todo starts extensions **/
 
   /** ready to run **/
