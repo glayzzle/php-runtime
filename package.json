@@ -1,6 +1,6 @@
 {
   "name": "php-runtime",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Runtime in order to execute transpiled PHP code into NodeJS/Javascript",
   "main": "src/index.js",
   "scripts": {

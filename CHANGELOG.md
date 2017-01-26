@@ -1,3 +1,30 @@
+## [Version 0.3.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.3.0) (2017-1-26)
+
+### Major Changes
+
+- add locutus dependency: [`3a6fe6c`](https://github.com/glayzzle/php-runtime/commit/3a6fe6c)
+- start the datetime module: [`d3a2cc6`](https://github.com/glayzzle/php-runtime/commit/d3a2cc6)
+- add math module: [`4f48a7c`](https://github.com/glayzzle/php-runtime/commit/4f48a7c)
+
+### Minor Changes
+
+- add streams (wip): [`b286d20`](https://github.com/glayzzle/php-runtime/commit/b286d20)
+- implement late state lookup & attach function to namespace: [`1d59a30`](https://github.com/glayzzle/php-runtime/commit/1d59a30)
+- implement error trigger: [`f8cf86a`](https://github.com/glayzzle/php-runtime/commit/f8cf86a)
+- add new runtime properties: [`5f24a90`](https://github.com/glayzzle/php-runtime/commit/5f24a90)
+- improve the namespace tree: [`919695d`](https://github.com/glayzzle/php-runtime/commit/919695d)
+
+### Patches
+
+- correct the sample: [`6ac7305`](https://github.com/glayzzle/php-runtime/commit/6ac7305)
+- improve tests: [`1023799`](https://github.com/glayzzle/php-runtime/commit/1023799)
+- fix extend args + add local ext folder: [`386410c`](https://github.com/glayzzle/php-runtime/commit/386410c)
+- fix extend args: [`f44ffa3`](https://github.com/glayzzle/php-runtime/commit/f44ffa3)
+- add new extensions & fix extend args: [`1eb0936`](https://github.com/glayzzle/php-runtime/commit/1eb0936)
+- fix function definition: [`bd0045f`](https://github.com/glayzzle/php-runtime/commit/bd0045f)
+
+[...full changes](https://github.com/glayzzle/php-runtime/compare/v0.2.0...v0.3.0)
+
 ## [Version 0.2.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.2.0) (2017-1-25)
 
 ### Major Changes
