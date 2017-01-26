@@ -17,7 +17,7 @@ var phpArray = require('./array');
  */
 var Runtime = function(options) {
   // the core engine
-  this.core = new Core(this);
+  this.core = new Core();
   // the context
   this.context = new Context();
   // custom / hack options
@@ -37,15 +37,21 @@ var Runtime = function(options) {
   }
 }
     **/
-    extend(true, this, options);
+    extend(true, options, this);
   }
   /** initialize streams **/
   this.stdout = new Stream();
   this.stderr = new Stream();
+  this.context.isCoreLoading = true;
   /** registers core functions **/
   require('./ext/constants')(this);
   require('./ext/errors')(this);
+  require('./ext/math')(this);
+  require('./ext/datetime')(this);
   /** @todo starts extensions **/
+
+  /** ready to run **/
+  this.context.isCoreLoading = false;
 };
 
 /**
