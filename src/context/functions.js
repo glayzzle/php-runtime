@@ -17,11 +17,13 @@ var Functions = function(context) {
 };
 
 Functions.prototype.get = function(name) {
+  if (name[0] !== '\\') name = '\\' + name;
   return this.items[name];
 };
 
 Functions.prototype.has = function(name) {
-
+  if (name[0] !== '\\') name = '\\' + name;
+  return name in this.items;
 };
 
 Functions.prototype.declare = function(name, args, type, fn) {
@@ -40,17 +42,21 @@ Functions.prototype.declare = function(name, args, type, fn) {
   if (!args) args = [];
   if (!type) type = null;
   if (name[0] !== '\\') {
-    name = '\\' + name;
+    name = this.context.namespace.current.fullName + '\\' + name;
   }
   // namespace resolution
   var nsPos = name.lastIndexOf('\\');
   var namespace = name.substring(0, nsPos + 1);
   var fnName = name.substring(nsPos + 1);
   // create instance
-  var result = new Fn(fn, fnName, namespace);
+  var result = new Fn(fn, fnName);
   result.arguments = args;
   result.type = type;
   this.items[name] = result;
+  // attach to namespace
+  var namespace = this.context.namespace.get(namespace);
+  namespace.functions[fnName] = result;
+  result.namespace = namespace;
   return result;
 };
 
@@ -58,19 +64,26 @@ Functions.prototype.declare = function(name, args, type, fn) {
  * Gets a function callback
  * @return {function}
  */
-Functions.prototype.callback = function(name) {
+Functions.prototype.callback = function(name, lookup, jit) {
+  if (name[0] !== '\\') name = '\\' + name;
   if (name in this.items) {
+    // bingo !
     return this.items[name].fn;
   } else {
+    var self = this;
     var fn = function() {
-      if (name in this.items) {
-        console.log('late cb');
-        fn = this.items[name].fn;
-        return fn.apply(this, arguments);
+      if (!(name in self.items) && lookup) {
+        // try root namespace
+        name = name.substring(name.lastIndexOf('\\'));
+      }
+      if (name in self.items) {
+        fn = self.items[name].fn;
+        jit(fn);
+        return fn.apply(self, arguments);
       } else {
         throw new Error('Undefined function ' + name);
       }
-    }.bind(this);
+    };
     return fn;
   }
 };
