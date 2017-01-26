@@ -23,10 +23,13 @@ Usage
 var Parser = require('php-parser');
 var Transpiler = require('php-transpiler');
 var Runtime = require('php-runtime');
-var php = new Runtime(
-  new Parser(),
-  new Transpiler()
-);
+var php = new Runtime({
+  core: {
+    config: {
+
+    }
+  }
+});
 // starts to execute :
 php.include(__dirname + '/index.php');
 ```
