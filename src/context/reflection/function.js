@@ -7,11 +7,12 @@
 
 /**
  * Defines a function structure
+ * @constructor Function
  */
-var Function = function(fn, name, namespace) {
+var Fn = function(fn, name) {
   this.fn = fn;
-  this.name = name || 'closure';
-  this.namespace = namespace || '\\';
+  this.name = name;
+  this.namespace = null;
   this.arguments = [];
   this.type = null;
 };
@@ -40,4 +41,4 @@ Function.prototype.call = function(context, args) {
 };
 */
 
-module.exports = Function;
+module.exports = Fn;
