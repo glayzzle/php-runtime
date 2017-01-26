@@ -5,9 +5,10 @@
  */
 'use strict';
 
-var Namespace = function(name, parent) {
+var Namespace = function(name, fullName, parent) {
   this.parent = parent;
   this.name = name;
+  this.fullName = fullName;
   this.children = {};
   this.functions = {};
   this.constants = {};
