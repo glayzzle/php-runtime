@@ -6,8 +6,6 @@
 'use strict';
 
 var should = require('should');
-var Parser = require('php-parser');
-var Transpiler = require('php-transpiler');
 var Runtime = require('../src/index');
 
 describe('init', function() {
@@ -18,17 +16,13 @@ describe('init', function() {
         error_log: 'syslog',
         //display_errors: false,
         //display_startup_errors: false,
-        extension: [
-          'glayzzle-mysqlnd',
-          'glayzzle-pdo',
-          'glayzzle-pdo-mysql'
-        ]
+        extension: ['php-core']
       }
     }
   });
 
   it('should work', function() {
-    php.include(__dirname + '/fibo.php');
-    php.include(__dirname + '/loop.php');
+    php.include(__dirname + '/scripts/fibo.php');
+    php.include(__dirname + '/scripts/loop.php');
   });
 });
