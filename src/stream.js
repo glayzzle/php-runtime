@@ -14,7 +14,7 @@ var Stream = function() {
 
 Stream.prototype.print = function(data) {
   // quick & dirty tests
-  console.log(data);
+  process.stdout.write(data);
 };
 
 module.exports = Stream;

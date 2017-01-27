@@ -15,7 +15,7 @@
 
 var path = require('path');
 var fs = require('fs');
-var extend = require('extend');
+var extend = require('./extend');
 
 var Parser = require('php-parser');
 var Transpiler = require('php-transpiler');
@@ -42,7 +42,7 @@ var Core = function(options) {
   this.config = new Config();
   this.cache = new Cache();
   if (options) {
-    extend(true, options, this);
+    extend(this, options);
   }
 };
 
