@@ -1,3 +1,25 @@
+## [Version 0.4.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.4.0) (2017-1-28)
+
+### Major Changes
+
+- src/extend.js: [`8861bae`](https://github.com/glayzzle/php-runtime/commit/8861bae)
+- remove old library --> php-core: [`af67fa5`](https://github.com/glayzzle/php-runtime/commit/af67fa5)
+- implement extension loading: [`fe4b4f8`](https://github.com/glayzzle/php-runtime/commit/fe4b4f8)
+
+### Minor Changes
+
+- clean test files: [`f68a482`](https://github.com/glayzzle/php-runtime/commit/f68a482)
+- update docs: [`8262ff0`](https://github.com/glayzzle/php-runtime/commit/8262ff0)
+- update dependencies: [`3c22859`](https://github.com/glayzzle/php-runtime/commit/3c22859)
+
+### Patches
+
+- various fixes: [`cc7c988`](https://github.com/glayzzle/php-runtime/commit/cc7c988)
+- ignore files on npm: [`570f0b7`](https://github.com/glayzzle/php-runtime/commit/570f0b7)
+- use new extend module: [`f318f0a`](https://github.com/glayzzle/php-runtime/commit/f318f0a)
+
+[...full changes](https://github.com/glayzzle/php-runtime/compare/v0.3.0...v0.4.0)
+
 ## [Version 0.3.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.3.0) (2017-1-26)
 
 ### Major Changes
