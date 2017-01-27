@@ -20,13 +20,36 @@ Usage
 -----
 
 ```js
-var Parser = require('php-parser');
-var Transpiler = require('php-transpiler');
 var Runtime = require('php-runtime');
 var php = new Runtime({
   core: {
     config: {
 
+    }
+  }
+});
+// starts to execute :
+php.include(__dirname + '/index.php');
+```
+
+# Core functions
+
+I wanted to keep this package light and focus only on runtime functions.
+
+In order to use common php functions / constants you should use [php-core](https://github.com/glayzzle/php-core) package.
+
+```
+npm install php-core --save
+```
+
+And initialize its dependency :
+
+```js
+var Runtime = require('php-runtime');
+var php = new Runtime({
+  core: {
+    config: {
+      extensions: ['php-core']
     }
   }
 });
