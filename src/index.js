@@ -5,7 +5,7 @@
  */
 'use strict';
 
-var extend = require('extend');
+var extend = require('./extend');
 var Core = require('./core');
 var Stream = require('./stream');
 var Context = require('./context/index');
@@ -37,7 +37,7 @@ var Runtime = function(options) {
   }
 }
     **/
-    extend(true, options, this);
+    extend(this, options);
   }
   /** initialize streams **/
   this.stdout = new Stream();
@@ -46,11 +46,12 @@ var Runtime = function(options) {
   /** registers core functions **/
   require('./ext/constants')(this);
   require('./ext/errors')(this);
-  require('./ext/math')(this);
-  require('./ext/datetime')(this);
   require('./ext/streams')(this);
-  /** @todo starts extensions **/
-
+  /** starts extensions **/
+  var extensions = this.core.config.extension;
+  for(var i = 0; i < extensions.length; i++) {
+    require(extensions[i])(this);
+  }
   /** ready to run **/
   this.context.isCoreLoading = false;
 };

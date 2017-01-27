@@ -4,7 +4,7 @@
  * @url http://glayzzle.com
  */
 
-var extend = require('extend');
+var extend = require('./extend');
 
 // define default options
 var defaults = {
@@ -27,7 +27,6 @@ var defaults = {
   html_errors: false,
   error_log: '/var/log/php-error.log',
   include_path: ['.', '/usr/share/php'],
-  extension_dir: [__dirname + '/ext', './node_modules', '/usr/local/lib/node_modules'],
   enable_dl: false,
   allow_url_fopen: true,
   allow_url_include: false,
@@ -52,9 +51,9 @@ var defaults = {
  */
 var Config = function(options) {
   if (options) {
-    extend(true, options, defaults, this);
+    extend(this, defaults, options);
   } else {
-    extend(true, defaults, this);
+    extend(this, defaults);
   }
 };
 
