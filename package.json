@@ -22,15 +22,14 @@
   },
   "homepage": "https://github.com/glayzzle/php-runtime#readme",
   "dependencies": {
-    "extend": "^3.0.0",
-    "locutus": "^2.0.6",
-    "php-parser": "latest",
-    "php-transpiler": "latest"
+    "php-parser": "^2.0.0-pre4",
+    "php-transpiler": "^0.1.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.15",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
+    "php-core": "^1.1.0",
     "should": "^11.1.2"
   }
 }
