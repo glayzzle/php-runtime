@@ -40,8 +40,8 @@ var Runtime = function(options) {
     extend(this, options);
   }
   /** initialize streams **/
-  this.stdout = new Stream();
-  this.stderr = new Stream();
+  this.stdout = new Stream(process.stdout.write);
+  this.stderr = new Stream(process.stderr.write);
   this.context.isCoreLoading = true;
   /** registers core functions **/
   require('./ext/constants')(this);
@@ -54,6 +54,13 @@ var Runtime = function(options) {
   }
   /** ready to run **/
   this.context.isCoreLoading = false;
+};
+
+/**
+ * Clean and reset the current context
+ */
+Runtime.prototype.reset = function(code) {
+  this.context.reset();
 };
 
 /**
