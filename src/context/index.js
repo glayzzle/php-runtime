@@ -18,19 +18,35 @@ var Constants = require('./constants');
  * a list of informations
  * @constructor Context
  */
-var Context = function(php) {
-  this.php        = php;
-  this.loaders    = [];
-  this.includes   = [];
-  this.class      = new Classes(this);
-  this.interface  = new Interfaces(this);
-  this.trait      = new Traits(this);
-  this.function   = new Functions(this);
-  this.constant   = new Constants(this);
-  this.variable   = new Variables(this);
-  this.namespace  = new Namespaces(this);
+var Context = function() {
+  this.loaders        = [];
+  this.includes       = [];
+  this.class          = new Classes(this);
+  this.interface      = new Interfaces(this);
+  this.trait          = new Traits(this);
+  this.function       = new Functions(this);
+  this.constant       = new Constants(this);
+  this.variable       = new Variables(this);
+  this.namespace      = new Namespaces(this);
   this.strictTypes    = false;
   this.isCoreLoading  = true;
+  this.globals        = {};
+};
+
+/**
+ * Reset the context, clear user defined :
+ * - constants
+ * - hooks
+ * - globals
+ * - functions
+ * - classes / traits / interfaces
+ * - namespaces
+ */
+Context.prototype.reset = function() {
+  // @todo
+  this.globals = {};
+  this.loaders = [];
+  this.includes = [];
 };
 
 /**
