@@ -40,8 +40,12 @@ var Runtime = function(options) {
     extend(this, options);
   }
   /** initialize streams **/
-  this.stdout = new Stream(process.stdout.write);
-  this.stderr = new Stream(process.stderr.write);
+  this.stdout = new Stream(process.stdout.write.bind(
+    process.stdout
+  ));
+  this.stderr = new Stream(process.stderr.write.bind(
+    process.stderr
+  ));
   this.context.isCoreLoading = true;
   /** registers core functions **/
   require('./ext/constants')(this);
