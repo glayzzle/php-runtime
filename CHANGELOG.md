@@ -1,3 +1,12 @@
+## [Version 0.5.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.5.0) (2017-1-28)
+
+### Minor Changes
+
+- add a callback helper for managing outputs: [`24ae9b4`](https://github.com/glayzzle/php-runtime/commit/24ae9b4)
+- add a context cleaner function: [`2002755`](https://github.com/glayzzle/php-runtime/commit/2002755)
+
+[...full changes](https://github.com/glayzzle/php-runtime/compare/v0.4.0...v0.5.0)
+
 ## [Version 0.4.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.4.0) (2017-1-28)
 
 ### Major Changes
