@@ -1,3 +1,11 @@
+## [Version 0.5.1](https://github.com/glayzzle/php-runtime/releases/tag/v0.5.1) (2017-1-28)
+
+### Patches
+
+- fix, bind context object on std: [`be1b678`](https://github.com/glayzzle/php-runtime/commit/be1b678)
+
+[...full changes](https://github.com/glayzzle/php-runtime/compare/v0.5.0...v0.5.1)
+
 ## [Version 0.5.0](https://github.com/glayzzle/php-runtime/releases/tag/v0.5.0) (2017-1-28)
 
 ### Minor Changes
